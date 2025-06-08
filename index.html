@@ -631,7 +631,10 @@
                 gameState.validMoves = [];
                 gameState.currentPlayer = gameState.currentPlayer === 'white' ? 'black' : 'white';
                 
-                // Check for checkmate or stalemate BEFORE rendering
+                renderBoard();
+                updateTurnIndicator();
+                
+                // Check for checkmate or stalemate
                 if (isCheckmate()) {
                     gameState.gameStatus = 'checkmate';
                     const winner = gameState.currentPlayer === 'white' ? 'Fekete' : 'Fehér';
@@ -645,9 +648,6 @@
                     document.getElementById('gameState').textContent = 'Játék folyamatban';
                     document.getElementById('gameState').className = 'game-state';
                 }
-                
-                renderBoard();
-                updateTurnIndicator();
             }
             
             // Update turn indicator
